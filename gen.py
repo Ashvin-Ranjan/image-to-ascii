@@ -4,17 +4,17 @@ import argparse
 parser = argparse.ArgumentParser(
                    formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('--image', type=str, default='input',
-                    help='input image')
+                    help='input image', metavar="image")
 parser.add_argument('--resize', type=float, default=1,
-                    help='amount to downscalse')
+                    help='amount to downscalse', metavar="resize")
 parser.add_argument('--invert', type=bool, default=False,
-                    help='invert colors')
+                    help='invert colors', metavar="invert")
 parser.add_argument('--write', type=bool, default=False,
                     help='write to output.txt')
 parser.add_argument('--chars', type=str, default=".'*#░▒▓█",
-                    help='input image')
-parser.add_argument('--double', type=bool, default=True,
-                    help='double the characters')
+                    help='input image', metavar="chars")
+parser.add_argument('--single', type=bool, default=False,
+                    help='print singe characters', metavar="single")
 
 args = parser.parse_args()
 
@@ -30,17 +30,19 @@ txt = ""
 
 
 
-
 for y in range(height):
 	for x in range(width):
 		try:
+
 			print(chars[round(im.getpixel((x, y))/(255/len(chars)))], end="")
-			if(args.double):
+			if(not args.single):
 				print(chars[round(im.getpixel((x, y))/(255/len(chars)))], end="")
 				txt += chars[round(im.getpixel((x, y))/(255/len(chars)))]
 			txt += chars[round(im.getpixel((x, y))/(255/len(chars)))]
 		except:
-			if(args.double):
+			print("█", end="")
+			txt += "█"
+			if(not args.single):
 				print("█", end="")
 				txt += "█"
 	txt += "\n"
