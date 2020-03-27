@@ -40,8 +40,9 @@ for y in range(height):
 				txt += chars[round(im.getpixel((x, y))/(255/len(chars)))]
 			txt += chars[round(im.getpixel((x, y))/(255/len(chars)))]
 		except:
-			print("█", end="")
-			txt += "█"
+			if(args.double):
+				print("█", end="")
+				txt += "█"
 	txt += "\n"
 	print()
 if args.write:
