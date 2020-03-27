@@ -23,7 +23,7 @@ width, height = im.size
 im = im.resize((round(width/args.resize), round(height/args.resize)), Image.ANTIALIAS) 
 im = im.convert('L')
 chars = args.chars
-if args.invert:
+if not args.invert:
 	chars = chars[::-1]
 width, height = im.size
 txt = ""
