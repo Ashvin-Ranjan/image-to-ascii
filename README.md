@@ -3,7 +3,7 @@
 This program converts Images to ascii text using python 3
 
 ## Running the program
-To run this you will need Pillow or PIL
+To run this you will need Pillow or PIL and argparse
 
 To get all of the arguments run,
 
